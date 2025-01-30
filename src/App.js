@@ -4,7 +4,7 @@ function App() {
   const [message, setMessage] = useState('Loading...');
 
   useEffect(() => {
-    fetch('https://api.hopewd.com/')
+    fetch('http://api.hopewd.com/')
       .then(response => response.json())
       .then(data => setMessage(data.message))
       .catch(error => setMessage('Error: Unable to fetch API'));
