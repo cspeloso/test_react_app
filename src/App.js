@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
 
 function App() {
+  const [message, setMessage] = useState('Loading...');
+
+  useEffect(() => {
+    fetch('https://api.hopewd.com/')
+      .then(response => response.json())
+      .then(data => setMessage(data.message))
+      .catch(error => setMessage('Error: Unable to fetch API'));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div class='container'>
+      <h1>This is a test.</h1>
+      <p>API response: {message}</p>
     </div>
   );
 }
